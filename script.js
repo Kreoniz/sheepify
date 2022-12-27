@@ -18,10 +18,22 @@ sheepBody.style.transform =
 
 function handleChoice(event) {
     const element = event.currentTarget;
+    if (element.classList.contains('dye')) {
+        if (wool[0].classList.contains('jeb_')) {
+            wool.forEach(woolElement => {
+                woolElement.classList.remove('jeb_');
+            });
+        }
+        dyeColor = element.dataset.color;
+        dyeSheep(dyeColor);
+    } else {
+        wool.forEach(woolElement => {
+            woolElement.classList.add('jeb_');
+        });
+    }
+
     document.querySelector('.active').classList.remove('active');
     element.classList.add('active');
-    dyeColor = element.dataset.color;
-    dyeSheep(dyeColor);
 }
 
 const choices = document.querySelectorAll('.choice');
@@ -39,5 +51,4 @@ rotateButton.addEventListener('click', e => {
         e.target.textContent = 'Rotate!';
         sheepBody.style.animationPlayState = 'paused';
     }
-
 });
