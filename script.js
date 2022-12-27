@@ -12,7 +12,8 @@ let rotateY = -40;
 let rotateX = 0;
 let rotateZ = 0;
 
-document.querySelector('.body').style.transform =
+const sheepBody = document.querySelector('.body');
+sheepBody.style.transform =
 `rotateY(${rotateY}deg) rotateX(${rotateX}deg) rotateZ(${rotateZ}deg)`;
 
 function handleChoice(event) {
@@ -24,3 +25,19 @@ function handleChoice(event) {
 }
 
 const choices = document.querySelectorAll('.choice');
+
+choices.forEach(choice => {
+    choice.addEventListener('click', handleChoice, true);
+});
+
+const rotateButton = document.querySelector('#rotate');
+rotateButton.addEventListener('click', e => {
+    if (e.target.textContent == 'Rotate!') {
+        e.target.textContent = 'Stop!';
+        sheepBody.style.animationPlayState = 'running';
+    } else if (e.target.textContent == 'Stop!') {
+        e.target.textContent = 'Rotate!';
+        sheepBody.style.animationPlayState = 'paused';
+    }
+
+});
