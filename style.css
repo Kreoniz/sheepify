@@ -1,0 +1,388 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightblue;
+    overflow: hidden;
+}
+
+/*
+ * 1.3 blocks tall = 0.75 + 0.55
+ * 0.9 blocks wide
+ * 1.6 blocks long
+*/
+.sheep {
+    --box: 32vmin;
+    --length: 1.6;
+    --width: 0.9;
+    --body-height: 0.75;
+
+    position: relative;
+    margin: 400px auto 0;
+
+    height: calc(2 * var(--box));
+    width: calc(1 * var(--box));
+
+    perspective: calc(100 * var(--box) / 2);
+}
+
+.sheep div {
+    box-shadow: inset 0px 0px 1px 0px black;
+}
+
+.body {
+    transform-style: preserve-3d;
+    transform: rotate3d(-1, -1, 0, 45deg);
+}
+
+/* BODY */
+.side {
+    background-color: #fff;
+    position: absolute;
+}
+
+.front-side,
+.back-side {
+    width: calc(var(--width) * var(--box));
+    height: calc(var(--body-height) * var(--box));
+}
+
+.front-side {
+    transform: translateZ(calc(var(--length) * var(--box) / 2));
+    filter: brightness(80%);
+}
+
+.back-side {
+    transform: rotateY(180deg) translateZ(calc(var(--length) * var(--box) / 2));
+    filter: brightness(95%);
+}
+
+.right-side,
+.left-side {
+    width: calc(var(--length) * var(--box));
+    height: calc(var(--body-height) * var(--box));
+}
+
+.right-side {
+    transform: rotateY(90deg) translateZ(calc(var(--box) * 0.1));
+    filter: brightness(60%);
+}
+
+.left-side {
+    transform: rotateY(-90deg) translateZ(calc(var(--box) * 0.8));
+    filter: brightness(90%);
+}
+
+.top-side,
+.bottom-side {
+    width: calc(var(--width) * var(--box));
+    height: calc(var(--length) * var(--box));
+}
+
+.top-side {
+    transform: rotateX(90deg) translateZ(calc(var(--box) * 0.8));
+}
+
+.bottom-side {
+    transform: rotateX(-90deg) translateZ(calc(var(--box) * -0.05));
+    filter: brightness(60%);
+}
+
+/* HEAD */
+.head {
+    --head-height: 0.45;
+    --head-width: 0.45;
+    position: absolute;
+    background-color: #fff;
+}
+.front-head,
+.back-head,
+.right-head,
+.left-head,
+.top-head,
+.bottom-head {
+    width: calc(var(--head-width) * var(--box));
+    height: calc(var(--head-height) * var(--box));
+}
+
+.front-head {
+    background: url('./img/sheep-face.png') 50% 50% / contain;
+    background-color: #fff;
+    transform: translateZ(calc(var(--head-height) * var(--box) * 2.2)) translateX(50%) translateY(-30%);
+    filter: brightness(80%);
+}
+
+.back-head {
+    transform: rotate(180deg) translateZ(calc(var(--head-height) * var(--box) * 1.2)) translateX(-50%) translateY(30%);
+    filter: brightness(95%);
+}
+
+.right-head {
+    transform: rotateY(90deg) translateZ(calc(var(--box) * calc((var(--head-height))))) translateX(-170%) translateY(-30%);
+    filter: brightness(60%);
+}
+
+.left-head {
+    transform: rotateY(-90deg) translateZ(calc(var(--box) * calc((var(--head-height) * 0.01)))) translateX(170%) translateY(-30%);
+    filter: brightness(90%);
+}
+
+.top-head {
+    transform: rotateX(90deg) translateZ(calc(var(--box) * calc((var(--head-height) * 0.8)))) translateY(170%) translateX(50%);
+}
+
+.bottom-head {
+    transform: rotateX(-90deg) translateZ(calc(var(--box) * calc((var(--head-height) * 0.2)))) translateY(-170%) translateX(50%);
+    filter: brightness(60%);
+}
+
+/* LEGS */
+.leg1 {
+    --leg-width: 0.3;
+    --leg-height: 0.35;
+    position: absolute;
+    background-color: #fff;
+    height: calc(var(--box) * var(--leg-height));
+    width: calc(var(--box) * var(--leg-width));
+}
+.leg1-front {
+    transform: translateY(200%) translateX(30%) translateZ(calc(var(--leg-width) * var(--box) * 2.2));
+    filter: brightness(80%);
+}
+.leg1-back {
+    transform: rotateY(180deg) translateY(200%) translateX(-30%) translateZ(calc(var(--leg-width) * var(--box) * -1.2));
+    filter: brightness(95%);
+}
+.leg1-right {
+    transform: rotateY(90deg)  translateY(200%) translateX(-170%) translateZ(calc(var(--leg-width) * var(--box) * 0.8));
+    filter: brightness(60%);
+}
+.leg1-left {
+    transform: rotateY(-90deg) translateY(200%) translateX(170%) translateZ(calc(var(--leg-width) * var(--box) * 0.2));
+    filter: brightness(90%);
+}
+.leg1-bottom {
+    height: calc(var(--box) * var(--leg-width));
+    transform: rotateX(-90deg) translateY(-170%) translateX(30%) translateZ(calc(var(--leg-width) * var(--box) * 3));
+    filter: brightness(60%);
+}
+
+.leg2 {
+    --leg-width: 0.3;
+    --leg-height: 0.35;
+    position: absolute;
+    background-color: #fff;
+    height: calc(var(--box) * var(--leg-height));
+    width: calc(var(--box) * var(--leg-width));
+}
+.leg2-front {
+    transform: translateY(200%) translateX(170%) translateZ(calc(var(--leg-width) * var(--box) * 2.2));
+    filter: brightness(80%);
+}
+.leg2-back {
+    transform: rotateY(180deg) translateY(200%) translateX(-170%) translateZ(calc(var(--leg-width) * var(--box) * -1.2));
+    filter: brightness(95%);
+}
+.leg2-right {
+    transform: rotateY(90deg)  translateY(200%) translateX(-170%) translateZ(calc(var(--leg-width) * var(--box) * 2.2));
+    filter: brightness(60%);
+}
+.leg2-left {
+    transform: rotateY(-90deg) translateY(200%) translateX(170%) translateZ(calc(var(--leg-width) * var(--box) * -1.2));
+    filter: brightness(90%);
+}
+.leg2-bottom {
+    height: calc(var(--box) * var(--leg-width));
+    transform: rotateX(-90deg) translateY(-170%) translateX(170%) translateZ(calc(var(--leg-width) * var(--box) * 3));
+    filter: brightness(60%);
+}
+
+.leg3 {
+    --leg-width: 0.3;
+    --leg-height: 0.35;
+    position: absolute;
+    background-color: #fff;
+    height: calc(var(--box) * var(--leg-height));
+    width: calc(var(--box) * var(--leg-width));
+}
+.leg3-front {
+    transform: translateY(200%) translateX(30%) translateZ(calc(var(--leg-width) * var(--box) * -2.2));
+    filter: brightness(80%);
+}
+.leg3-back {
+    transform: rotateY(180deg) translateY(200%) translateX(-30%) translateZ(calc(var(--leg-width) * var(--box) * 1.2));
+    filter: brightness(95%);
+}
+.leg3-right {
+    transform: rotateY(90deg)  translateY(200%) translateX(170%) translateZ(calc(var(--leg-width) * var(--box) * 0.8));
+    filter: brightness(60%);
+}
+.leg3-left {
+    transform: rotateY(-90deg) translateY(200%) translateX(-170%) translateZ(calc(var(--leg-width) * var(--box) * 0.2));
+    filter: brightness(90%);
+}
+.leg3-bottom {
+    height: calc(var(--box) * var(--leg-width));
+    transform: rotateX(-90deg) translateY(170%) translateX(30%) translateZ(calc(var(--leg-width) * var(--box) * 3));
+    filter: brightness(60%);
+}
+
+.leg4 {
+    --leg-width: 0.3;
+    --leg-height: 0.35;
+    position: absolute;
+    background-color: #fff;
+    height: calc(var(--box) * var(--leg-height));
+    width: calc(var(--box) * var(--leg-width));
+}
+.leg4-front {
+    transform: translateY(200%) translateX(170%) translateZ(calc(var(--leg-width) * var(--box) * -2.2));
+    filter: brightness(80%);
+}
+.leg4-back {
+    transform: rotateY(180deg) translateY(200%) translateX(-170%) translateZ(calc(var(--leg-width) * var(--box) * 1.2));
+    filter: brightness(95%);
+}
+.leg4-right {
+    transform: rotateY(90deg)  translateY(200%) translateX(170%) translateZ(calc(var(--leg-width) * var(--box) * 2.2));
+    filter: brightness(60%);
+}
+.leg4-left {
+    transform: rotateY(-90deg) translateY(200%) translateX(-170%) translateZ(calc(var(--leg-width) * var(--box) * -1.2));
+    filter: brightness(90%);
+}
+.leg4-bottom {
+    height: calc(var(--box) * var(--leg-width));
+    transform: rotateX(-90deg) translateY(170%) translateX(170%) translateZ(calc(var(--leg-width) * var(--box) * 3));
+    filter: brightness(60%);
+}
+
+/* HOOTS */
+.hoot1 {
+    --hoot-width: 0.2;
+    --hoot-height: 0.3;
+    position: absolute;
+    background-color: #fff;
+    height: calc(var(--box) * var(--hoot-height));
+    width: calc(var(--box) * var(--hoot-width));
+    background: url("./img/sheep-leg.png") 50% 50% / cover;
+}
+.hoot1-front {
+    transform: translateY(350%) translateX(70%) translateZ(calc(var(--hoot-width) * var(--box) * 3.05));
+    filter: brightness(80%);
+}
+.hoot1-back {
+    transform: rotateY(180deg) translateY(350%) translateX(-70%) translateZ(calc(var(--hoot-width) * var(--box) * -2.05));
+    filter: brightness(95%);
+}
+.hoot1-right {
+    transform: rotateY(90deg)  translateY(350%) translateX(-255%) translateZ(calc(var(--hoot-width) * var(--box) * 1.19));
+    filter: brightness(60%);
+}
+.hoot1-left {
+    transform: rotateY(-90deg) translateY(350%) translateX(255%) translateZ(calc(var(--hoot-width) * var(--box) * -0.2));
+    filter: brightness(90%);
+}
+.hoot1-bottom {
+    height: calc(var(--box) * var(--hoot-width));
+    background: #1d1713;
+    transform: rotateX(-90deg) translateY(-255%) translateX(70%) translateZ(calc(var(--hoot-width) * var(--box) * 6.2));
+    filter: brightness(60%);
+}
+
+.hoot2 {
+    --hoot-width: 0.2;
+    --hoot-height: 0.3;
+    position: absolute;
+    background-color: #fff;
+    height: calc(var(--box) * var(--hoot-height));
+    width: calc(var(--box) * var(--hoot-width));
+    background: url("./img/sheep-leg.png") 50% 50% / cover;
+}
+.hoot2-front {
+    transform: translateY(350%) translateX(280%) translateZ(calc(var(--hoot-width) * var(--box) * 3.05));
+    filter: brightness(80%);
+}
+.hoot2-back {
+    transform: rotateY(180deg) translateY(350%) translateX(-280%) translateZ(calc(var(--hoot-width) * var(--box) * -2.05));
+    filter: brightness(95%);
+}
+.hoot2-right {
+    transform: rotateY(90deg)  translateY(350%) translateX(-255%) translateZ(calc(var(--hoot-width) * var(--box) * 2.31));
+    filter: brightness(60%);
+}
+.hoot2-left {
+    transform: rotateY(-90deg) translateY(350%) translateX(255%) translateZ(calc(var(--hoot-width) * var(--box) * -3.29));
+    filter: brightness(90%);
+}
+.hoot2-bottom {
+    height: calc(var(--box) * var(--hoot-width));
+    background: #1d1713;
+    transform: rotateX(-90deg) translateY(-255%) translateX(280%) translateZ(calc(var(--hoot-width) * var(--box) * 6.2));
+    filter: brightness(60%);
+}
+
+.hoot3 {
+    --hoot-width: 0.2;
+    --hoot-height: 0.3;
+    position: absolute;
+    background-color: #fff;
+    height: calc(var(--box) * var(--hoot-height));
+    width: calc(var(--box) * var(--hoot-width));
+    background: url("./img/sheep-leg.png") 50% 50% / cover;
+}
+.hoot3-front {
+    transform: translateY(350%) translateX(70%) translateZ(calc(var(--hoot-width) * var(--box) * -3.05));
+    filter: brightness(80%);
+}
+.hoot3-back {
+    transform: rotateY(180deg) translateY(350%) translateX(-70%) translateZ(calc(var(--hoot-width) * var(--box) * 2.05));
+    filter: brightness(95%);
+}
+.hoot3-right {
+    transform: rotateY(90deg)  translateY(350%) translateX(255%) translateZ(calc(var(--hoot-width) * var(--box) * 1.19));
+    filter: brightness(60%);
+}
+.hoot3-left {
+    transform: rotateY(-90deg) translateY(350%) translateX(-255%) translateZ(calc(var(--hoot-width) * var(--box) * -0.2));
+    filter: brightness(90%);
+}
+.hoot3-bottom {
+    height: calc(var(--box) * var(--hoot-width));
+    background: #1d1713;
+    transform: rotateX(-90deg) translateY(255%) translateX(70%) translateZ(calc(var(--hoot-width) * var(--box) * 6.2));
+    filter: brightness(60%);
+}
+
+.hoot4 {
+    --hoot-width: 0.2;
+    --hoot-height: 0.3;
+    position: absolute;
+    background-color: #fff;
+    height: calc(var(--box) * var(--hoot-height));
+    width: calc(var(--box) * var(--hoot-width));
+    background: url("./img/sheep-leg.png") 50% 50% / cover;
+}
+.hoot4-front {
+    transform: translateY(350%) translateX(280%) translateZ(calc(var(--hoot-width) * var(--box) * -3.05));
+    filter: brightness(80%);
+}
+.hoot4-back {
+    transform: rotateY(180deg) translateY(350%) translateX(-280%) translateZ(calc(var(--hoot-width) * var(--box) * 2.05));
+    filter: brightness(95%);
+}
+.hoot4-right {
+    transform: rotateY(90deg)  translateY(350%) translateX(255%) translateZ(calc(var(--hoot-width) * var(--box) * 2.31));
+    filter: brightness(60%);
+}
+.hoot4-left {
+    transform: rotateY(-90deg) translateY(350%) translateX(-255%) translateZ(calc(var(--hoot-width) * var(--box) * -3.29));
+    filter: brightness(90%);
+}
+.hoot4-bottom {
+    height: calc(var(--box) * var(--hoot-width));
+    background: #1d1713;
+    transform: rotateX(-90deg) translateY(255%) translateX(280%) translateZ(calc(var(--hoot-width) * var(--box) * 6.2));
+    filter: brightness(60%);
+}
