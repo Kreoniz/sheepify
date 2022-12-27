@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Minecraft";
+    src: url("fonts/MinecraftRegular.otf");
+}
+
 * {
     box-sizing: border-box;
 }
@@ -8,10 +13,10 @@ body {
 
 h1 {
     color: white;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 2px 2px 4px black;
     font-size: 3.2em;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Minecraft", Arial, Helvetica, sans-serif;
 }
 
 .choices {
@@ -45,6 +50,7 @@ h1 {
     margin: 20px auto;
     padding: 10px 50px;
     font-size: 3.2em;
+    font-family: "Minecraft", sans-serif;
 }
 
 .rotate {
@@ -66,6 +72,19 @@ h1 {
 .jeb_{
 		animation: jeb 5s linear;
 		animation-iteration-count: infinite;
+}
+
+.name {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -250%);
+    font-size: 3em;
+    font-family: "Minecraft", sans-serif;
+    padding: 0px 15px;
+    line-height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
 }
 
 @keyframes jeb{
@@ -137,7 +156,7 @@ h1 {
     perspective: calc(100 * var(--box) / 2);
 }
 
-.sheep div {
+.sheep .wool {
     box-shadow: inset 0px 0px 1px 0px black;
 }
 

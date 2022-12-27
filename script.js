@@ -20,6 +20,7 @@ function handleChoice(event) {
     const element = event.currentTarget;
     if (element.classList.contains('dye')) {
         if (wool[0].classList.contains('jeb_')) {
+            document.querySelector('.name').style.display = "none";
             wool.forEach(woolElement => {
                 woolElement.classList.remove('jeb_');
             });
@@ -27,6 +28,7 @@ function handleChoice(event) {
         dyeColor = element.dataset.color;
         dyeSheep(dyeColor);
     } else {
+        document.querySelector('.name').style.display = "block";
         wool.forEach(woolElement => {
             woolElement.classList.add('jeb_');
         });
