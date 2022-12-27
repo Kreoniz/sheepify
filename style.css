@@ -4,7 +4,47 @@
 
 body {
     background-color: lightblue;
-    overflow: hidden;
+}
+
+h1 {
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    font-size: 3.2em;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.choice {
+    background-color: #8b8b8b;
+    border-radius: 10px;
+    border: 5px solid #c6c6c6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    background-color: #8b8b8b;
+    border: 5px solid #c1c1c1;
+    box-shadow: 0 0 5px 5px #8b8b8b;
+}
+
+.choice img {
+    min-width: 75px;
+    max-width: 100px;
+}
+
+#rotate {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 50px;
+    font-size: 3.2em;
 }
 
 /*
@@ -13,13 +53,13 @@ body {
  * 1.6 blocks long
 */
 .sheep {
-    --box: 32vmin;
+    --box: 26vmin;
     --length: 1.6;
     --width: 0.9;
     --body-height: 0.75;
 
     position: relative;
-    margin: 400px auto 0;
+    margin: 200px auto 0;
 
     height: calc(2 * var(--box));
     width: calc(1 * var(--box));
@@ -33,7 +73,6 @@ body {
 
 .body {
     transform-style: preserve-3d;
-    transform: rotate3d(-1, -1, 0, 45deg);
 }
 
 /* BODY */
